@@ -6,7 +6,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 namespace AdventOfCode.Exos;
 
-public static class Exo1
+public static class Trebuchet
 {
     private static readonly Dictionary<string, string> wordToNumber = new()
     {
