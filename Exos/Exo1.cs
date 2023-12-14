@@ -28,7 +28,7 @@ public static class Exo1
             input = input.Replace(mapping.Key, mapping.Key[0] + mapping.Value + mapping.Key[mapping.Key.Count() - 1]);
         }
 
-        return Regex.Replace(input, "[^0-9]", "").ToList();
+        return Regex.Replace(input, "[^1-9]", "").ToList();
     }
 
     public static int Calibration(string input)
