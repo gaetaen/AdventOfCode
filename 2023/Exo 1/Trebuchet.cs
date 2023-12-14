@@ -22,24 +22,27 @@ public static class Trebuchet
         {"nine", "9"}
     };
 
-    private static List<char> ExtractDigits(string input)
+    private static List<char> ExtractDigits(string input, bool WithWordToNumber)
     {
-        foreach (var mapping in wordToNumber)
+        if (WithWordToNumber)
         {
-            input = input.Replace(mapping.Key, mapping.Key[0] + mapping.Value + mapping.Key[^1]);
+            foreach (var mapping in wordToNumber)
+            {
+                input = input.Replace(mapping.Key, mapping.Key[0] + mapping.Value + mapping.Key[^1]);
+            }
         }
 
         return Regex.Replace(input, "[^1-9]", "").ToList();
     }
 
-    public static int Calibration(string input)
+    public static int Calibration(string input, bool WithWordToNumber)
     {
         string[] lineArray = input.Split("\r\n");
         int result = 0;
 
         foreach (string line in lineArray)
         {
-            List<char> onlyDigits = ExtractDigits(line);
+            List<char> onlyDigits = ExtractDigits(line, WithWordToNumber);
             string number = string.Concat(onlyDigits[0], onlyDigits[^1]);
 
             if (!int.TryParse(number, out int num))
