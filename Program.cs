@@ -1,13 +1,17 @@
 ﻿using AdventOfCode._2023.Exo_2;
 using AdventOfCode.Exos;
+using System.Diagnostics;
+
+Stopwatch stopwatch = new();
 
 // Exo 1.1 Trebuchet
 try
 {
     string fileContent = File.ReadAllText("2023\\Exo 1\\Input.txt");
-
+    stopwatch.Restart();
     int result = Trebuchet.Calibration(fileContent, false);
-    Console.WriteLine($"Exo 1.1 Trebuchet = {result}");
+    stopwatch.Stop();
+    Console.WriteLine($"Exo 1.1 Trebuchet = {result} in {stopwatch.ElapsedMilliseconds}ms");
 }
 catch (IOException ex)
 {
@@ -17,9 +21,10 @@ catch (IOException ex)
 try
 {
     string fileContent = File.ReadAllText("2023\\Exo 1\\Input.txt");
-
+    stopwatch.Restart();
     int result = Trebuchet.Calibration(fileContent, true);
-    Console.WriteLine($"Exo 1.2 Trebuchet = {result}");
+    stopwatch.Stop();
+    Console.WriteLine($"Exo 1.2 Trebuchet = {result} in {stopwatch.ElapsedMilliseconds}ms");
 }
 catch (IOException ex)
 {
@@ -29,8 +34,10 @@ catch (IOException ex)
 try
 {
     string fileContent = File.ReadAllText("2023\\Exo 2\\Input.txt");
+    stopwatch.Restart();
     int result = CubeConundrum.GamePossibility(12, 13, 14, fileContent);
-    Console.WriteLine($"Exo 2.1 CubeConundrum = {result}");
+    stopwatch.Stop();
+    Console.WriteLine($"Exo 2.1 CubeConundrum = {result} in {stopwatch.ElapsedMilliseconds}ms");
 }
 catch (IOException ex)
 {
@@ -40,8 +47,10 @@ catch (IOException ex)
 try
 {
     string fileContent = File.ReadAllText("2023\\Exo 2\\Input.txt");
+    stopwatch.Restart();
     int result = CubeConundrum.CubePower(fileContent);
-    Console.WriteLine($"Exo 2.1 CubeConundrum = {result}");
+    stopwatch.Stop();
+    Console.WriteLine($"Exo 2.2 CubeConundrum = {result} in {stopwatch.ElapsedMilliseconds}ms");
 }
 catch (IOException ex)
 {
