@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+
 namespace AdventOfCode.Exos;
 
 public static class Trebuchet
@@ -25,7 +26,7 @@ public static class Trebuchet
     {
         foreach (var mapping in wordToNumber)
         {
-            input = input.Replace(mapping.Key, mapping.Key[0] + mapping.Value + mapping.Key[mapping.Key.Count() - 1]);
+            input = input.Replace(mapping.Key, mapping.Key[0] + mapping.Value + mapping.Key[^1]);
         }
 
         return Regex.Replace(input, "[^1-9]", "").ToList();
@@ -52,4 +53,3 @@ public static class Trebuchet
         return result;
     }
 }
-
