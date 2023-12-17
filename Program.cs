@@ -76,7 +76,6 @@ try
     string fileContent = File.ReadAllText("2023\\Exo 3\\Input.txt");
     stopwatch.Restart();
     int result = GearRatios.SchematicMultiply(fileContent);
-    //int result = GearRatios.SchematicMultiply("");
     stopwatch.Stop();
     Console.WriteLine($"Exo 3.2 Gear Ratios = {result} in {stopwatch.ElapsedMilliseconds}ms");
 }

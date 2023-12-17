@@ -19,59 +19,59 @@ namespace AdventOfCode._2023.Exo_3
             List<char> numberList = new();
             bool isAdjacentSymbol = false;
 
-            for (int i = 0; i < lineArray.Length; i++)
+            for (int row = 0; row < lineArray.Length; row++)
             {
-                schematic[i] = new char[lineArray[i].Length];
+                schematic[row] = new char[lineArray[row].Length];
 
-                for (int j = 0; j < lineArray[i].Length; j++)
+                for (int col = 0; col < lineArray[row].Length; col++)
                 {
-                    schematic[i][j] = lineArray[i][j];
+                    schematic[row][col] = lineArray[row][col];
                 }
             }
 
-            for (int i = 0; i < schematic.Length; i++)
+            for (int row = 0; row < schematic.Length; row++)
             {
-                for (int j = 0; j < schematic[i].Length; j++)
+                for (int col = 0; col < schematic[row].Length; col++)
                 {
-                    if (char.IsDigit(schematic[i][j]))
+                    if (char.IsDigit(schematic[row][col]))
                     {
                         // Horizontal and Vertical Checks:
 
                         // Check above the current element
-                        if (i > 0 && !char.IsDigit(schematic[i - 1][j]) && schematic[i - 1][j] != '.')
+                        if (row > 0 && !char.IsDigit(schematic[row - 1][col]) && schematic[row - 1][col] != '.')
                             isAdjacentSymbol = true;
 
                         // Check below the current element
-                        if (i < schematic.Length - 1 && !char.IsDigit(schematic[i + 1][j]) && schematic[i + 1][j] != '.')
+                        if (row < schematic.Length - 1 && !char.IsDigit(schematic[row + 1][col]) && schematic[row + 1][col] != '.')
                             isAdjacentSymbol = true;
 
                         // Check to the left of the current element
-                        if (j > 0 && !char.IsDigit(schematic[i][j - 1]) && schematic[i][j - 1] != '.')
+                        if (col > 0 && !char.IsDigit(schematic[row][col - 1]) && schematic[row][col - 1] != '.')
                             isAdjacentSymbol = true;
 
                         // Check to the right of the current element
-                        if (j < schematic[i].Length - 1 && !char.IsDigit(schematic[i][j + 1]) && schematic[i][j + 1] != '.')
+                        if (col < schematic[row].Length - 1 && !char.IsDigit(schematic[row][col + 1]) && schematic[row][col + 1] != '.')
                             isAdjacentSymbol = true;
 
                         // Diagonal Checks:
 
                         // Check top-left diagonal
-                        if (i > 0 && j > 0 && !char.IsDigit(schematic[i - 1][j - 1]) && schematic[i - 1][j - 1] != '.')
+                        if (row > 0 && col > 0 && !char.IsDigit(schematic[row - 1][col - 1]) && schematic[row - 1][col - 1] != '.')
                             isAdjacentSymbol = true;
 
                         // Check bottom-right diagonal
-                        if (i < schematic.Length - 1 && j < schematic[i].Length - 1 && !char.IsDigit(schematic[i + 1][j + 1]) && schematic[i + 1][j + 1] != '.')
+                        if (row < schematic.Length - 1 && col < schematic[row].Length - 1 && !char.IsDigit(schematic[row + 1][col + 1]) && schematic[row + 1][col + 1] != '.')
                             isAdjacentSymbol = true;
 
                         // Check top-right diagonal
-                        if (i > 0 && j < schematic[i].Length - 1 && !char.IsDigit(schematic[i - 1][j + 1]) && schematic[i - 1][j + 1] != '.')
+                        if (row > 0 && col < schematic[row].Length - 1 && !char.IsDigit(schematic[row - 1][col + 1]) && schematic[row - 1][col + 1] != '.')
                             isAdjacentSymbol = true;
 
                         // Check bottom-left diagonal
-                        if (i < schematic.Length - 1 && j > 0 && !char.IsDigit(schematic[i + 1][j - 1]) && schematic[i + 1][j - 1] != '.')
+                        if (row < schematic.Length - 1 && col > 0 && !char.IsDigit(schematic[row + 1][col - 1]) && schematic[row + 1][col - 1] != '.')
                             isAdjacentSymbol = true;
 
-                        numberList.Add(schematic[i][j]);
+                        numberList.Add(schematic[row][col]);
                     }
                     else if (isAdjacentSymbol && numberList.Any() && int.TryParse(string.Concat(numberList), out int number))
                     {
@@ -91,107 +91,105 @@ namespace AdventOfCode._2023.Exo_3
 
         public static int SchematicMultiply(string input)
         {
-            string[] lineArray = input.Split("\r\n");
+            string[] lineArray = input.Split(Environment.NewLine);
             char[][] schematic = new char[lineArray.Length][];
             int result = 0;
             List<char> numberList = new();
-            bool isAsteriskAdjacent = false;
             Dictionary<string, int> asteriskDictionary = new();
 
-            List<string> aaaaa = new();
-            for (int i = 0; i < lineArray.Length; i++)
+            for (int row = 0; row < lineArray.Length; row++)
             {
-                schematic[i] = new char[lineArray[i].Length];
+                schematic[row] = new char[lineArray[row].Length];
 
-                for (int j = 0; j < lineArray[i].Length; j++)
+                for (int col = 0; col < lineArray[row].Length; col++)
                 {
-                    if ((i == 0 && lineArray[i][j] == '*') || (i == schematic.Length - 1 && lineArray[i][j] == '*') || (j == 0 && lineArray[i][j] == '*') || (j == schematic[i].Length - 1 && lineArray[i][j] == '*'))
+                    if ((row == 0 && lineArray[row][col] == '*') || (row == schematic.Length - 1 && lineArray[row][col] == '*') || (col == 0 && lineArray[row][col] == '*') || (col == schematic[row].Length - 1 && lineArray[row][col] == '*'))
                     {
-                        schematic[i][j] = '.';
+                        schematic[row][col] = '.';
                     }
                     else
                     {
-                        schematic[i][j] = lineArray[i][j];
+                        schematic[row][col] = lineArray[row][col];
                     }
                 }
             }
 
-            for (int i = 0; i < schematic.Length; i++)
+            for (int row = 0; row < schematic.Length; row++)
             {
                 string positionKey = "";
+                bool isAsteriskAdjacent = false;
 
-                for (int j = 0; j <= schematic[i].Length; j++)
+                for (int col = 0; col <= schematic[row].Length; col++)
                 {
-                    if (j < schematic[i].Length && char.IsDigit(schematic[i][j]))
+                    if (col < schematic[row].Length && char.IsDigit(schematic[row][col]))
                     {
                         // Horizontal and Vertical Checks:
 
-                        // Check above the current element
-                        if (i > 0 && schematic[i - 1][j] == '*')
+                        // Check above the current element ***
+                        if (row > 0 && schematic[row - 1][col] == '*')
                         {
                             isAsteriskAdjacent = true;
-                            positionKey = $"i{i - 1}j{j}";
+                            positionKey = $"row{row - 1},col{col}";
                         }
 
                         // Check below the current element ***
-                        if (i < schematic.Length - 1 && schematic[i + 1][j] == '*')
+                        if (row < schematic.Length - 1 && schematic[row + 1][col] == '*')
                         {
                             isAsteriskAdjacent = true;
-                            positionKey = $"i{i + 1}j{j}";
+                            positionKey = $"row{row + 1},col{col}";
                         }
 
                         // Check to the left of the current element ***
-                        if (j > 0 && schematic[i][j - 1] == '*')
+                        if (col > 0 && schematic[row][col - 1] == '*')
                         {
                             isAsteriskAdjacent = true;
-                            positionKey = $"i{i}j{j - 1}";
+                            positionKey = $"row{row},col{col - 1}";
                         }
 
                         // Check to the right of the current element ***
-                        if (j < schematic[i].Length - 1 && schematic[i][j + 1] == '*')
+                        if (col < schematic[row].Length - 1 && schematic[row][col + 1] == '*')
                         {
                             isAsteriskAdjacent = true;
-                            positionKey = $"i{i}j{j + 1}";
+                            positionKey = $"row{row},col{col + 1}";
                         }
 
                         // Diagonal Checks:
 
                         // Check top-left diagonal ***
-                        if (i > 0 && j > 0 && schematic[i - 1][j - 1] == '*')
+                        if (row > 0 && col > 0 && schematic[row - 1][col - 1] == '*')
                         {
                             isAsteriskAdjacent = true;
-                            positionKey = $"i{i - 1}j{j - 1}";
+                            positionKey = $"row{row - 1},col{col - 1}";
                         }
 
                         // Check bottom-right diagonal ***
-                        if (i < schematic.Length - 1 && j < schematic[i].Length - 1 && schematic[i + 1][j + 1] == '*')
+                        if (row < schematic.Length - 1 && col < schematic[row].Length - 1 && schematic[row + 1][col + 1] == '*')
                         {
                             isAsteriskAdjacent = true;
-                            positionKey = $"i{i + 1}j{j + 1}";
+                            positionKey = $"row{row + 1},col{col + 1}";
                         }
 
                         // Check top-right diagonal ***
-                        if (i > 0 && j < schematic[i].Length - 1 && schematic[i - 1][j + 1] == '*')
+                        if (row > 0 && col < schematic[row].Length - 1 && schematic[row - 1][col + 1] == '*')
                         {
                             isAsteriskAdjacent = true;
-                            positionKey = $"i{i - 1}j{j + 1}";
+                            positionKey = $"row{row - 1},col{col + 1}";
                         }
 
                         // Check bottom-left diagonal ***
-                        if (i < schematic.Length - 1 && j > 0 && schematic[i + 1][j - 1] == '*')
+                        if (row < schematic.Length - 1 && col > 0 && schematic[row + 1][col - 1] == '*')
                         {
                             isAsteriskAdjacent = true;
-                            positionKey = $"i{i + 1}j{j - 1}";
+                            positionKey = $"row{row + 1},col{col - 1}";
                         }
 
-                        numberList.Add(schematic[i][j]);
+                        numberList.Add(schematic[row][col]);
                     }
                     else if (isAsteriskAdjacent && numberList.Any() && int.TryParse(string.Concat(numberList), out int number))
                     {
                         if (asteriskDictionary.ContainsKey(positionKey))
                         {
                             asteriskDictionary.TryGetValue(positionKey, out int firstNumber);
-                            aaaaa.Add((firstNumber * number).ToString());
                             result += (firstNumber * number);
                         }
                         else
