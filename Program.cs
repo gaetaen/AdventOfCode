@@ -57,14 +57,28 @@ Stopwatch stopwatch = new();
 //{
 //    Console.WriteLine($"An error occurred while reading the file: {ex.Message}");
 //}
+////Exo 3.1 Gear Ratios
+//try
+//{
+//    string fileContent = File.ReadAllText("2023\\Exo 3\\Input.txt");
+//    stopwatch.Restart();
+//    int result = GearRatios.SchematicSum(fileContent);
+//    stopwatch.Stop();
+//    Console.WriteLine($"Exo 3.1 Gear Ratios = {result} in {stopwatch.ElapsedMilliseconds}ms");
+//}
+//catch (IOException ex)
+//{
+//    Console.WriteLine($"An error occurred while reading the file: {ex.Message}");
+//}
 // Exo 3.1 Gear Ratios
 try
 {
     string fileContent = File.ReadAllText("2023\\Exo 3\\Input.txt");
     stopwatch.Restart();
-    int result = GearRatios.SchematicSum(fileContent);
+    int result = GearRatios.SchematicMultiply(fileContent);
+    //int result = GearRatios.SchematicMultiply("");
     stopwatch.Stop();
-    Console.WriteLine($"Exo 3.1 Gear Ratios = {result} in {stopwatch.ElapsedMilliseconds}ms");
+    Console.WriteLine($"Exo 3.2 Gear Ratios = {result} in {stopwatch.ElapsedMilliseconds}ms");
 }
 catch (IOException ex)
 {
