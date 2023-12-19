@@ -12,7 +12,7 @@ public static class CubeConundrum
 {
     public static int GamePossibility(int red, int green, int blue, string input)
     {
-        string[] GameArray = input.Split("\r\n");
+        string[] GameArray = input.Split(Environment.NewLine);
         int possibleGameCount = 0;
 
         foreach (var game in GameArray)
@@ -56,7 +56,7 @@ public static class CubeConundrum
 
     public static int CubePower(string input)
     {
-        string[] GameArray = input.Split("\r\n");
+        string[] GameArray = input.Split(Environment.NewLine);
         int cubesPowerCount = 0;
 
         foreach (var game in GameArray)

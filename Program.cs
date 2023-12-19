@@ -1,5 +1,6 @@
 ﻿using AdventOfCode._2023.Exo_2;
 using AdventOfCode._2023.Exo_3;
+using AdventOfCode._2023.Exo_4;
 using AdventOfCode.Exos;
 using System.Diagnostics;
 
@@ -70,14 +71,27 @@ Stopwatch stopwatch = new();
 //{
 //    Console.WriteLine($"An error occurred while reading the file: {ex.Message}");
 //}
-// Exo 3.1 Gear Ratios
+//// Exo 3.2 Gear Ratios
+//try
+//{
+//    string fileContent = File.ReadAllText("2023\\Exo 3\\Input.txt");
+//    stopwatch.Restart();
+//    int result = GearRatios.SchematicMultiply(fileContent);
+//    stopwatch.Stop();
+//    Console.WriteLine($"Exo 3.2 Gear Ratios = {result} in {stopwatch.ElapsedMilliseconds}ms");
+//}
+//catch (IOException ex)
+//{
+//    Console.WriteLine($"An error occurred while reading the file: {ex.Message}");
+//}
+// Exo 4.1 Scratchcards
 try
 {
-    string fileContent = File.ReadAllText("2023\\Exo 3\\Input.txt");
+    string fileContent = File.ReadAllText("2023\\Exo 4\\Input.txt");
     stopwatch.Restart();
-    int result = GearRatios.SchematicMultiply(fileContent);
+    int result = Scratchcards.CalculatePoints(fileContent);
     stopwatch.Stop();
-    Console.WriteLine($"Exo 3.2 Gear Ratios = {result} in {stopwatch.ElapsedMilliseconds}ms");
+    Console.WriteLine($"Exo 4.1 Scratchcards  = {result} in {stopwatch.ElapsedMilliseconds}ms");
 }
 catch (IOException ex)
 {

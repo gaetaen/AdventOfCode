@@ -13,7 +13,7 @@ namespace AdventOfCode._2023.Exo_3
     {
         public static int SchematicSum(string input)
         {
-            string[] lineArray = input.Split("\r\n");
+            string[] lineArray = input.Split(Environment.NewLine);
             char[][] schematic = new char[lineArray.Length][];
             int result = 0;
             List<char> numberList = new();

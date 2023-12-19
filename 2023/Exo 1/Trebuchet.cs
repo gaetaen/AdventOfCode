@@ -37,7 +37,7 @@ public static class Trebuchet
 
     public static int Calibration(string input, bool WithWordToNumber)
     {
-        string[] lineArray = input.Split("\r\n");
+        string[] lineArray = input.Split(Environment.NewLine);
         int result = 0;
 
         foreach (string line in lineArray)
