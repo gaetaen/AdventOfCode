@@ -76,7 +76,7 @@ public static class Scratchcards
             };
         }
 
-        for (int x = 0; x < cardArray.Length; x++)
+        for (int x = 0; x < cardArray.Length - 1; x++)
         {
             Card card = cardArray[x];
             for (int i = 0; i < card.Multiplication; i++)
