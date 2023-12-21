@@ -54,8 +54,8 @@ public static class Scratchcards
             string game = games[j];
             string[] gameInfo = game.Split(":");
             string[] cardNumbers = gameInfo[1].Split("|");
-            string[] gameNumbers = cardNumbers[0].Split(" ").Where(num => !string.IsNullOrEmpty(num)).ToArray();
-            string[] winningNumbers = cardNumbers[1].Split(" ").Where(num => !string.IsNullOrEmpty(num)).ToArray();
+            string[] gameNumbers = cardNumbers[0].Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+            string[] winningNumbers = cardNumbers[1].Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
             int value = 0;
 
             for (int i = 0; i < gameNumbers.Length; i++)
