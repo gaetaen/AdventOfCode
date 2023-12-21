@@ -8,22 +8,22 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Update="2023\Exo 4\Scratchcards.cs">
+    <Compile Update="2023\Day-4\Scratchcards.cs">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="2023\Exo 1\Input.txt">
+    <None Update="2023\Day-1\Input.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="2023\Exo 2\Input.txt">
+    <None Update="2023\Day-2\Input.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="2023\Exo 3\Input.txt">
+    <None Update="2023\Day-3\Input.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="2023\Exo 4\Input.txt">
+    <None Update="2023\Day-4\Input.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

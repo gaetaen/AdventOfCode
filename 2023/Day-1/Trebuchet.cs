@@ -5,7 +5,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace AdventOfCode.Exos;
+namespace AdventOfCode._2023.Day_1;
 
 public static class Trebuchet
 {

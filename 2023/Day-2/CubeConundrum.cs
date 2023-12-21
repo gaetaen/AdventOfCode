@@ -6,7 +6,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
-namespace AdventOfCode._2023.Exo_2;
+namespace AdventOfCode._2023.Day_2;
 
 public static class CubeConundrum
 {
