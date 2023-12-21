@@ -79,12 +79,11 @@ public static class Scratchcards
         for (int x = 0; x < cardArray.Length; x++)
         {
             Card card = cardArray[x];
-            for (int i = x + 1; i < cardArray.Length; i++)
+            for (int i = 0; i < card.Multiplication; i++)
             {
-                if (card.Value > 0)
+                for (int j = 0; j < cardArray[x].Value; j++)
                 {
-                    cardArray[i].Multiplication++;
-                    card.Value--;
+                    cardArray[x + j + 1].Multiplication++;
                 }
             }
         }
