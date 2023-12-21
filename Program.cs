@@ -6,107 +6,38 @@ using System.Diagnostics;
 
 Stopwatch stopwatch = new();
 
-// Day 1.1 Trebuchet
 try
 {
-    string fileContent = File.ReadAllText("2023\\Day-1\\Input.txt");
-    stopwatch.Restart();
-    int result = Trebuchet.Calibration(fileContent, false);
-    stopwatch.Stop();
-    Console.WriteLine($"Day 1.1 Trebuchet = {result} in {stopwatch.ElapsedMilliseconds}ms");
+    string day1Content = File.ReadAllText("2023\\Day-1\\Input.txt");
+    string day2Content = File.ReadAllText("2023\\Day-2\\Input.txt");
+    string day3Content = File.ReadAllText("2023\\Day-3\\Input.txt");
+    string day4Content = File.ReadAllText("2023\\Day-4\\Input.txt");
+
+    // Day 1
+    RunDayChallenge("Day 1.1 Trebuchet", () => Trebuchet.Calibration(day1Content, false));
+    RunDayChallenge("Day 1.2 Trebuchet", () => Trebuchet.Calibration(day1Content, true));
+
+    // Day 2
+    RunDayChallenge("Day 2.1 CubeConundrum", () => CubeConundrum.GamePossibility(12, 13, 14, day2Content));
+    RunDayChallenge("Day 2.2 CubeConundrum", () => CubeConundrum.CubePower(day2Content));
+
+    // Day 3
+    RunDayChallenge("Day 3.1 Gear Ratios", () => GearRatios.SchematicSum(day3Content));
+    RunDayChallenge("Day 3.2 Gear Ratios", () => GearRatios.SchematicMultiply(day3Content));
+
+    // Day 4
+    RunDayChallenge("Day 4.1 Scratchcards", () => Scratchcards.CalculatePoints(day4Content));
+    RunDayChallenge("Day 4.2 Scratchcards", () => Scratchcards.TotalScratchcards(day4Content));
 }
 catch (IOException ex)
 {
     Console.WriteLine($"An error occurred while reading the file: {ex.Message}");
 }
-// Day 1.2 Trebuchet
-try
+
+void RunDayChallenge(string challengeName, Func<int> challenge)
 {
-    string fileContent = File.ReadAllText("2023\\Day-1\\Input.txt");
     stopwatch.Restart();
-    int result = Trebuchet.Calibration(fileContent, true);
+    int result = challenge();
     stopwatch.Stop();
-    Console.WriteLine($"Day 1.2 Trebuchet = {result} in {stopwatch.ElapsedMilliseconds}ms");
-}
-catch (IOException ex)
-{
-    Console.WriteLine($"An error occurred while reading the file: {ex.Message}");
-}
-// Day 2.1 CubeConundrum
-try
-{
-    string fileContent = File.ReadAllText("2023\\Day-2\\Input.txt");
-    stopwatch.Restart();
-    int result = CubeConundrum.GamePossibility(12, 13, 14, fileContent);
-    stopwatch.Stop();
-    Console.WriteLine($"Day 2.1 CubeConundrum = {result} in {stopwatch.ElapsedMilliseconds}ms");
-}
-catch (IOException ex)
-{
-    Console.WriteLine($"An error occurred while reading the file: {ex.Message}");
-}
-// Day 2.2 CubeConundrum
-try
-{
-    string fileContent = File.ReadAllText("2023\\Day-2\\Input.txt");
-    stopwatch.Restart();
-    int result = CubeConundrum.CubePower(fileContent);
-    stopwatch.Stop();
-    Console.WriteLine($"Day 2.2 CubeConundrum = {result} in {stopwatch.ElapsedMilliseconds}ms");
-}
-catch (IOException ex)
-{
-    Console.WriteLine($"An error occurred while reading the file: {ex.Message}");
-}
-//Day 3.1 Gear Ratios
-try
-{
-    string fileContent = File.ReadAllText("2023\\Day-3\\Input.txt");
-    stopwatch.Restart();
-    int result = GearRatios.SchematicSum(fileContent);
-    stopwatch.Stop();
-    Console.WriteLine($"Day 3.1 Gear Ratios = {result} in {stopwatch.ElapsedMilliseconds}ms");
-}
-catch (IOException ex)
-{
-    Console.WriteLine($"An error occurred while reading the file: {ex.Message}");
-}
-// Day 3.2 Gear Ratios
-try
-{
-    string fileContent = File.ReadAllText("2023\\Day-3\\Input.txt");
-    stopwatch.Restart();
-    int result = GearRatios.SchematicMultiply(fileContent);
-    stopwatch.Stop();
-    Console.WriteLine($"Day 3.2 Gear Ratios = {result} in {stopwatch.ElapsedMilliseconds}ms");
-}
-catch (IOException ex)
-{
-    Console.WriteLine($"An error occurred while reading the file: {ex.Message}");
-}
-// Day 4.1 Scratchcards
-try
-{
-    string fileContent = File.ReadAllText("2023\\Day-4\\Input.txt");
-    stopwatch.Restart();
-    int result = Scratchcards.CalculatePoints(fileContent);
-    stopwatch.Stop();
-    Console.WriteLine($"Day 4.1 Scratchcards  = {result} in {stopwatch.ElapsedMilliseconds}ms");
-}
-catch (IOException ex)
-{
-    Console.WriteLine($"An error occurred while reading the file: {ex.Message}");
-}
-// Day 4.2 Scratchcards
-try
-{
-    string fileContent = File.ReadAllText("2023\\Day-4\\Input.txt");
-    stopwatch.Restart();
-    int result = Scratchcards.TotalScratchcards(fileContent);
-    stopwatch.Stop();
-    Console.WriteLine($"Day 4.2 Scratchcards  = {result} in {stopwatch.ElapsedMilliseconds}ms");
-}
-catch (IOException ex)
-{
-    Console.WriteLine($"An error occurred while reading the file: {ex.Message}");
+    Console.WriteLine($"{challengeName} = {result} in {stopwatch.ElapsedMilliseconds}ms");
 }
